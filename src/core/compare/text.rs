@@ -8,12 +8,8 @@ use crate::core::compare::CompareOutput;
 use crate::core::compare::stats::CompareFileSummary;
 use crate::core::error::{DiffyError, Result};
 
-const BLANK_DIFF_PATH: &str = "Untitled.txt";
+pub const BLANK_DIFF_PATH: &str = "Untitled.txt";
 const BLANK_DIFF_CONTEXT_LINES: u32 = 3;
-
-pub(crate) fn blank_diff_path() -> &'static str {
-    BLANK_DIFF_PATH
-}
 
 pub(crate) fn output_from_text_pair(old: &str, new: &str) -> Result<CompareOutput> {
     let mut raw_diff = raw_patch_header();
@@ -46,7 +42,7 @@ pub(crate) fn output_from_text_pair(old: &str, new: &str) -> Result<CompareOutpu
     })
 }
 
-fn gix_line_stats(old_content: &[u8], new_content: &[u8]) -> (u32, u32) {
+pub(super) fn gix_line_stats(old_content: &[u8], new_content: &[u8]) -> (u32, u32) {
     let input = InternedInput::new(
         ByteLinesWithoutTerminator::new(old_content),
         ByteLinesWithoutTerminator::new(new_content),
@@ -55,7 +51,7 @@ fn gix_line_stats(old_content: &[u8], new_content: &[u8]) -> (u32, u32) {
     (diff.count_additions(), diff.count_removals())
 }
 
-fn render_gix_unified_hunks(
+pub(super) fn render_gix_unified_hunks(
     old_content: &[u8],
     new_content: &[u8],
     context_lines: u32,

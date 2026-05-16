@@ -3917,7 +3917,7 @@ impl AppState {
             .compare_generation
             .get(&self.store)
             .saturating_add(1);
-        let path = crate::core::compare::text::blank_diff_path().to_owned();
+        let path = crate::core::compare::text::BLANK_DIFF_PATH.to_owned();
         let additions = u32_to_i32_saturating(carbon_file.additions);
         let deletions = u32_to_i32_saturating(carbon_file.deletions);
         let prepared = prepare_active_file(0, &carbon_file);
