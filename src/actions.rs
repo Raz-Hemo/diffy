@@ -22,6 +22,7 @@ pub enum AppAction {
 pub enum WorkspaceAction {
     OpenRepository(PathBuf),
     OpenBlankDiff,
+    SetBlankDiffPanelHeightPx(u32),
     ShowWorkingTree,
     RefreshRepository,
 }

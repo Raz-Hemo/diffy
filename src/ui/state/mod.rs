@@ -82,6 +82,9 @@ const SYNTAX_OVERSCAN_ROWS: usize = 160;
 const MAX_PENDING_SYNTAX_WINDOWS: usize = 96;
 const COMPARE_WORKING_SET_MAX_FILES: usize = 96;
 const COMPARE_WORKING_SET_MIN_FILES: usize = 24;
+const BLANK_DIFF_PANEL_DEFAULT_HEIGHT_PX: u32 = 220;
+const BLANK_DIFF_PANEL_MIN_HEIGHT_PX: u32 = 120;
+const BLANK_DIFF_PANEL_MAX_HEIGHT_PX: u32 = 720;
 const COMPARE_WORKING_SET_BYTE_BUDGET: usize = 64 * 1024 * 1024;
 const COMPARE_WORKING_SET_PREFETCH_PAGES: u32 = 3;
 const COMPARE_WORKING_SET_TRAILING_PAGES: u32 = 1;
@@ -3238,6 +3241,7 @@ pub struct AppState {
     pub blank_diff_left_editor: Editor,
     pub blank_diff_right_editor: Editor,
     pub blank_diff_active: bool,
+    pub blank_diff_panel_height_px: u32,
     pub ai_openai_key: String,
     pub ai_anthropic_key: String,
     pub ai_openai_editing: bool,
@@ -3326,6 +3330,7 @@ impl Default for AppState {
             blank_diff_left_editor: blank_diff_editor(),
             blank_diff_right_editor: blank_diff_editor(),
             blank_diff_active: false,
+            blank_diff_panel_height_px: BLANK_DIFF_PANEL_DEFAULT_HEIGHT_PX,
             ai_openai_key: String::new(),
             ai_anthropic_key: String::new(),
             ai_openai_editing: false,
@@ -3504,6 +3509,7 @@ impl AppState {
             blank_diff_left_editor: blank_diff_editor(),
             blank_diff_right_editor: blank_diff_editor(),
             blank_diff_active: false,
+            blank_diff_panel_height_px: BLANK_DIFF_PANEL_DEFAULT_HEIGHT_PX,
             ai_openai_key: String::new(),
             ai_anthropic_key: String::new(),
             ai_openai_editing: false,
