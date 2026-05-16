@@ -12,6 +12,7 @@ impl AppState {
     pub(super) fn apply_workspace_action(&mut self, action: WorkspaceAction) -> Vec<Effect> {
         match action {
             WorkspaceAction::OpenRepository(path) => self.open_repository(path),
+            WorkspaceAction::OpenBlankDiff => self.open_blank_diff(),
             WorkspaceAction::ShowWorkingTree => self.show_working_tree(),
             WorkspaceAction::RefreshRepository => self.refresh_repository(),
         }
